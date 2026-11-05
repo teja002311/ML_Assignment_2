@@ -4,5 +4,3 @@ __pycache__/
 .venv/
 venv/
 .streamlit/secrets.toml
-2026AJ05571_ML_Assignment_2_Submission.docx
-generate_submission_report.py
