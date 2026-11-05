@@ -1,0 +1,441 @@
+{
+  "dataset": {
+    "name": "Dry Bean Dataset",
+    "source": "https://archive.ics.uci.edu/dataset/602/dry+bean+dataset",
+    "instances": 13543,
+    "raw_instances": 13611,
+    "duplicates_removed": 68,
+    "features": 16,
+    "target": "Class",
+    "classes": [
+      "BARBUNYA",
+      "BOMBAY",
+      "CALI",
+      "DERMASON",
+      "HOROZ",
+      "SEKER",
+      "SIRA"
+    ],
+    "train_rows": 10834,
+    "test_rows": 2709,
+    "random_state": 42
+  },
+  "feature_columns": [
+    "Area",
+    "Perimeter",
+    "MajorAxisLength",
+    "MinorAxisLength",
+    "AspectRation",
+    "Eccentricity",
+    "ConvexArea",
+    "EquivDiameter",
+    "Extent",
+    "Solidity",
+    "roundness",
+    "Compactness",
+    "ShapeFactor1",
+    "ShapeFactor2",
+    "ShapeFactor3",
+    "ShapeFactor4"
+  ],
+  "target_column": "Class",
+  "model_files": {
+    "Logistic Regression": "logistic_regression.joblib",
+    "Decision Tree": "decision_tree.joblib",
+    "K-Nearest Neighbors": "knn.joblib",
+    "Gaussian Naive Bayes": "gaussian_naive_bayes.joblib",
+    "Support Vector Machine": "support_vector_machine.joblib"
+  },
+  "models": {
+    "Logistic Regression": {
+      "model_file": "logistic_regression.joblib",
+      "metrics": {
+        "Accuracy": 0.914729,
+        "AUC": 0.993185,
+        "Precision": 0.916246,
+        "Recall": 0.914729,
+        "F1": 0.91498,
+        "MCC": 0.897309
+      },
+      "observation": "Strong linear baseline (weighted F1 0.9150); scaling and balanced class weights support stable multiclass performance."
+    },
+    "Decision Tree": {
+      "model_file": "decision_tree.joblib",
+      "metrics": {
+        "Accuracy": 0.892211,
+        "AUC": 0.95666,
+        "Precision": 0.893148,
+        "Recall": 0.892211,
+        "F1": 0.892501,
+        "MCC": 0.869859
+      },
+      "observation": "Interpretable nonlinear rules (weighted F1 0.8925), but performance is more sensitive to depth and leaf-size choices."
+    },
+    "K-Nearest Neighbors": {
+      "model_file": "knn.joblib",
+      "metrics": {
+        "Accuracy": 0.913621,
+        "AUC": 0.983471,
+        "Precision": 0.9144,
+        "Recall": 0.913621,
+        "F1": 0.913803,
+        "MCC": 0.895555
+      },
+      "observation": "Captures local class neighborhoods well after scaling (weighted F1 0.9138); prediction cost grows with the stored training set."
+    },
+    "Gaussian Naive Bayes": {
+      "model_file": "gaussian_naive_bayes.joblib",
+      "metrics": {
+        "Accuracy": 0.89701,
+        "AUC": 0.98988,
+        "Precision": 0.899653,
+        "Recall": 0.89701,
+        "F1": 0.897199,
+        "MCC": 0.876171
+      },
+      "observation": "Fast probabilistic baseline (weighted F1 0.8972); its conditional independence and Gaussian assumptions limit performance."
+    },
+    "Support Vector Machine": {
+      "model_file": "support_vector_machine.joblib",
+      "metrics": {
+        "Accuracy": 0.926172,
+        "AUC": 0.99331,
+        "Precision": 0.926886,
+        "Recall": 0.926172,
+        "F1": 0.92631,
+        "MCC": 0.910912
+      },
+      "observation": "RBF decision boundaries provide strong nonlinear separation (weighted F1 0.9263) at a higher training and inference cost."
+    }
+  },
+  "winner": "Support Vector Machine",
+  "confusion_matrices": {
+    "Logistic Regression": [
+      [
+        239,
+        0,
+        17,
+        0,
+        0,
+        4,
+        5
+      ],
+      [
+        0,
+        104,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        9,
+        0,
+        308,
+        0,
+        5,
+        2,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        623,
+        0,
+        15,
+        71
+      ],
+      [
+        1,
+        0,
+        12,
+        5,
+        351,
+        0,
+        3
+      ],
+      [
+        11,
+        0,
+        0,
+        5,
+        0,
+        381,
+        9
+      ],
+      [
+        3,
+        0,
+        2,
+        30,
+        9,
+        11,
+        472
+      ]
+    ],
+    "Decision Tree": [
+      [
+        230,
+        0,
+        24,
+        0,
+        2,
+        3,
+        6
+      ],
+      [
+        0,
+        104,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        19,
+        0,
+        297,
+        0,
+        5,
+        2,
+        3
+      ],
+      [
+        0,
+        0,
+        0,
+        625,
+        2,
+        15,
+        67
+      ],
+      [
+        3,
+        0,
+        18,
+        2,
+        337,
+        0,
+        12
+      ],
+      [
+        7,
+        0,
+        0,
+        11,
+        0,
+        378,
+        10
+      ],
+      [
+        11,
+        0,
+        0,
+        47,
+        17,
+        6,
+        446
+      ]
+    ],
+    "K-Nearest Neighbors": [
+      [
+        231,
+        0,
+        22,
+        0,
+        1,
+        4,
+        7
+      ],
+      [
+        0,
+        104,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        10,
+        0,
+        306,
+        0,
+        6,
+        2,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        645,
+        0,
+        11,
+        53
+      ],
+      [
+        0,
+        0,
+        14,
+        4,
+        347,
+        0,
+        7
+      ],
+      [
+        6,
+        0,
+        0,
+        6,
+        0,
+        381,
+        13
+      ],
+      [
+        3,
+        0,
+        0,
+        51,
+        7,
+        5,
+        461
+      ]
+    ],
+    "Gaussian Naive Bayes": [
+      [
+        211,
+        0,
+        40,
+        0,
+        1,
+        2,
+        11
+      ],
+      [
+        0,
+        104,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        19,
+        0,
+        301,
+        0,
+        5,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        610,
+        0,
+        21,
+        78
+      ],
+      [
+        0,
+        0,
+        10,
+        4,
+        352,
+        0,
+        6
+      ],
+      [
+        8,
+        0,
+        0,
+        5,
+        0,
+        380,
+        13
+      ],
+      [
+        4,
+        0,
+        0,
+        32,
+        11,
+        8,
+        472
+      ]
+    ],
+    "Support Vector Machine": [
+      [
+        244,
+        0,
+        13,
+        0,
+        0,
+        3,
+        5
+      ],
+      [
+        0,
+        104,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        11,
+        0,
+        306,
+        0,
+        6,
+        2,
+        1
+      ],
+      [
+        0,
+        0,
+        0,
+        638,
+        0,
+        15,
+        56
+      ],
+      [
+        2,
+        0,
+        7,
+        4,
+        353,
+        0,
+        6
+      ],
+      [
+        5,
+        0,
+        0,
+        4,
+        0,
+        390,
+        7
+      ],
+      [
+        4,
+        0,
+        1,
+        34,
+        6,
+        8,
+        474
+      ]
+    ]
+  },
+  "metric_average": "weighted",
+  "auc_strategy": "one-vs-rest, weighted"
+}

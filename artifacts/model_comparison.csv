@@ -1,0 +1,6 @@
+ML Model Name,Accuracy,AUC,Precision,Recall,F1,MCC,Observation
+Support Vector Machine,0.926172,0.99331,0.926886,0.926172,0.92631,0.910912,RBF decision boundaries provide strong nonlinear separation (weighted F1 0.9263) at a higher training and inference cost.
+Logistic Regression,0.914729,0.993185,0.916246,0.914729,0.91498,0.897309,Strong linear baseline (weighted F1 0.9150); scaling and balanced class weights support stable multiclass performance.
+K-Nearest Neighbors,0.913621,0.983471,0.9144,0.913621,0.913803,0.895555,Captures local class neighborhoods well after scaling (weighted F1 0.9138); prediction cost grows with the stored training set.
+Gaussian Naive Bayes,0.89701,0.98988,0.899653,0.89701,0.897199,0.876171,Fast probabilistic baseline (weighted F1 0.8972); its conditional independence and Gaussian assumptions limit performance.
+Decision Tree,0.892211,0.95666,0.893148,0.892211,0.892501,0.869859,"Interpretable nonlinear rules (weighted F1 0.8925), but performance is more sensitive to depth and leaf-size choices."
