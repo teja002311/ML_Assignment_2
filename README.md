@@ -5,11 +5,10 @@
 
 ## a. Problem statement
 
-The objective is to classify dry bean seeds into one of seven varieties using
-16 numerical shape and size measurements extracted from bean images. Five
-classification algorithms are trained on the same stratified training split,
-evaluated on the same untouched test split, and exposed through a Streamlit
-application that loads saved models without retraining.
+For this assignment, I used measurements of dry bean seeds to predict their
+variety. The dataset has seven bean classes and 16 input features. I trained the
+five required classification models and compared them on the same test data.
+The saved models are used in the Streamlit app.
 
 ## b. Dataset description
 
@@ -24,9 +23,10 @@ application that loads saved models without retraining.
 - **Split:** Stratified 80% training and 20% test, `random_state=42`
 - **Test file:** `test_data.csv` contains all required input features and the target column
 
-The features describe bean geometry, including area, perimeter, major and minor
-axis lengths, eccentricity, convex area, diameter, extent, solidity, roundness,
-compactness and four shape factors. The raw dataset contains no missing values.
+The features are measurements such as area, perimeter, axis lengths,
+eccentricity, roundness, compactness and shape factors. The dataset did not
+contain any missing values. I removed 68 exact duplicate rows before splitting
+the data.
 
 ## c. Project links
 
@@ -35,8 +35,8 @@ compactness and four shape factors. The raw dataset contains no missing values.
 
 ## d. Models used and comparison
 
-All reported multiclass precision, recall and F1 values use weighted averaging.
-AUC uses weighted one-vs-rest calculation.
+Precision, recall and F1 are weighted scores because this is a multiclass
+dataset. AUC is calculated using weighted one-vs-rest.
 
 | ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC |
 |---|---:|---:|---:|---:|---:|---:|
@@ -50,12 +50,12 @@ AUC uses weighted one-vs-rest calculation.
 
 | ML Model Name | Observation about model performance |
 |---|---|
-| Logistic Regression | Produced a strong linear baseline. Scaling and balanced class weights gave stable results, but linear boundaries could not capture all class overlap. |
-| Decision Tree | Learned interpretable nonlinear rules but had the lowest AUC and F1, showing greater sensitivity to the chosen tree depth and leaf size. |
-| K-Nearest Neighbors | Performed close to logistic regression after scaling. It captured local neighbourhoods effectively, although inference requires retaining the training samples. |
-| Gaussian Naive Bayes | Trained quickly and achieved high AUC, but its Gaussian conditional-independence assumptions reduced classification accuracy and F1. |
-| Support Vector Machine | Achieved the best accuracy, weighted F1 and MCC. The RBF kernel modelled nonlinear class boundaries more effectively than the other classifiers. |
-| **Overall winner** | **Support Vector Machine**, selected by weighted F1 (0.926310), with the highest accuracy and MCC as supporting evidence. |
+| Logistic Regression | It gave good results, with an F1 score of 0.914980. Some class overlap was still difficult for its linear decision boundary. |
+| Decision Tree | It was easy to interpret, but it gave the lowest AUC and F1 among the five models. |
+| K-Nearest Neighbors | It performed close to Logistic Regression after feature scaling, with an F1 score of 0.913803. |
+| Gaussian Naive Bayes | It trained quickly and had a high AUC, but its accuracy and F1 were lower than Logistic Regression, KNN and SVM. |
+| Support Vector Machine | It gave the highest accuracy, F1 and MCC. The RBF kernel handled the overlapping classes better in this dataset. |
+| **Overall winner** | **Support Vector Machine** is the winner because it achieved the highest weighted F1 score of 0.926310. |
 
 ## Repository structure
 
@@ -81,17 +81,16 @@ ML_Assignment_2/
 ## Streamlit application features
 
 - CSV test-data upload
-- Bundled `test_data.csv` for immediate demonstration
+- Included `test_data.csv` for testing
 - Dropdown for detailed model selection
 - Six required evaluation metrics for all five models
 - Confusion matrix for the selected model
 - Per-class classification report
 - Downloadable prediction file
-- Saved-model loading only; the app never retrains on uploaded data
+- Loads the saved models without retraining them
 
 The uploaded CSV must include all 16 feature columns and the `Class` target
-column. Unknown classes, missing columns and missing values are rejected with a
-clear error message.
+column. The app displays an error if any required column or value is missing.
 
 ## Local execution
 
@@ -101,20 +100,5 @@ python train_models.py
 streamlit run app.py
 ```
 
-Model training is only needed when regenerating artifacts. The committed model
-files and `test_data.csv` allow the Streamlit app to run directly after
-dependency installation.
-
-## Reproducibility
-
-- Fixed random state: 42
-- Duplicate records removed before splitting
-- Stratified train/test split
-- Preprocessing fitted only on training data through scikit-learn pipelines
-- All five models evaluated on the identical test records
-
-## BITS Virtual Lab evidence
-
-The final submission PDF must include one screenshot showing successful
-assignment execution on BITS Virtual Lab. This screenshot is added during the
-final submission process.
+The models are already saved in the `model` folder, so training is not required
+to start the Streamlit app.
