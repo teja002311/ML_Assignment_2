@@ -31,7 +31,7 @@ the data.
 ## c. Project links
 
 - **GitHub repository:** [ML Assignment 2](https://github.com/teja002311/ML_Assignment_2)
-- **Live Streamlit app:** Pending deployment
+- **Live Streamlit app:** [Dry Bean Classification](https://tejamlassignment2.streamlit.app/)
 
 ## d. Models used and comparison
 
